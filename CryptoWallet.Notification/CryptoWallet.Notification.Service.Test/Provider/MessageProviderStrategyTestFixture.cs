@@ -4,6 +4,7 @@ using Moq;
 using CryptoWallet.Service.Notification;
 using CryptoWallet.Notification.Messaging.Email;
 using CryptoWallet.Notification.Messaging.Sms;
+using CryptoWallet.Notification.Common.Interface.Common;
 
 namespace CryptoWallet.Notification.Service.Test
 {
@@ -14,7 +15,9 @@ namespace CryptoWallet.Notification.Service.Test
 
         public MessageProviderStrategyTestFixture()
         {
-            emailProvider = new EmailMessageProvider();
+            Mock<IAppSettings> appSettings = new Mock<IAppSettings>();
+
+            emailProvider = new EmailMessageProvider(appSettings.Object);
             smsProvider = new SmsMessageProvider();
         }
 
