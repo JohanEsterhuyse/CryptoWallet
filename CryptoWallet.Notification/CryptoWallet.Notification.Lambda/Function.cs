@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
+using CryptoWallet.Notification.Lambda.Model;
+using CryptoWallet.Service.Notification;
 
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
@@ -44,7 +46,11 @@ namespace CryptoWallet.Notification.Lambda
         {
             context.Logger.LogLine($"Processed message {message.Body}");
 
-            // TODO: Do interesting work based on the new message
+            var sqsMessage = JsonConvert.DeserializeObject<SqsMessage>(message.Body);
+            var notification = JsonConvert.DeserializeObject<NotificationMessageDto>(sqsMessage.Message);
+
+
+
             await Task.CompletedTask;
         }
     }

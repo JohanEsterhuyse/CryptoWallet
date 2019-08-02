@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace CryptoWallet
 {
@@ -33,12 +34,21 @@ namespace CryptoWallet
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
 
-
             // Add S3 to the ASP.NET Core dependency injection framework.
             services.AddAWSService<Amazon.S3.IAmazonS3>();
 
             //TODO: Change DI to use catalogs so that every layer becomes responsible for its own dependencies
-            services.AddScoped<IAppSettings, AppSettings>();
+            var envname = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var builder = new ConfigurationBuilder()
+             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+             .AddJsonFile($"appsettings.{envname}.json", optional: true)
+             .AddEnvironmentVariables();
+
+            IConfiguration configuration = builder.Build();
+            var appSettings = new AppSettings(configuration);
+
+            services.AddSingleton<IAppSettings>(appSettings);
+
             services.AddScoped<NotificationsService>();
             services.AddScoped<MessageProviderStrategy>();
 

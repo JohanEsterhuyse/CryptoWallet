@@ -15,7 +15,8 @@ namespace CryptoWallet.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]NotificationMessageDto notificationMessageDto)
+        [Route("SendNotification")]
+        public void SendNotification([FromBody]NotificationMessageDto notificationMessageDto)
         {
             notificationsService.SendNotification(notificationMessageDto);
         }
