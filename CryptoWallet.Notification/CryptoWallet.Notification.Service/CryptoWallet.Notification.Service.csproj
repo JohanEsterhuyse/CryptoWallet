@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoWallet.Notification.Common\CryptoWallet.Notification.Common.csproj" />
+    <ProjectReference Include="..\CryptoWallet.Notification.Domain\CryptoWallet.Notification.Domain.csproj" />
+    <ProjectReference Include="..\CryptoWallet.Notification.Messaging.Email\CryptoWallet.Notification.Messaging.Email.csproj" />
+    <ProjectReference Include="..\CryptoWallet.Notification.Messaging.Sms\CryptoWallet.Notification.Messaging.Sms.csproj" />
+  </ItemGroup>
+
+</Project>
