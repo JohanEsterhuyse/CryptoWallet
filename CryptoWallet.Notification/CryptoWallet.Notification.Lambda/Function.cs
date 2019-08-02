@@ -7,6 +7,9 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 using CryptoWallet.Notification.Lambda.Model;
 using CryptoWallet.Service.Notification;
+using CryptoWallet.Notification.Lambda.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using CryptoWallet.Notification.Service;
 
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
@@ -36,20 +39,22 @@ namespace CryptoWallet.Notification.Lambda
         /// <returns></returns>
         public async Task FunctionHandler(SQSEvent evnt, ILambdaContext context)
         {
-            foreach(var message in evnt.Records)
+            using (var serviceProvider = DependencyInjectionHelper.ConfigureServices())
             {
-                await ProcessMessageAsync(message, context);
+                foreach (var message in evnt.Records)
+                {
+                    await ProcessMessageAsync(message, serviceProvider);
+                }
             }
         }
 
-        private async Task ProcessMessageAsync(SQSEvent.SQSMessage message, ILambdaContext context)
+        private async Task ProcessMessageAsync(SQSEvent.SQSMessage message, ServiceProvider serviceProvider)
         {
-            context.Logger.LogLine($"Processed message {message.Body}");
-
             var sqsMessage = JsonConvert.DeserializeObject<SqsMessage>(message.Body);
             var notification = JsonConvert.DeserializeObject<NotificationMessageDto>(sqsMessage.Message);
 
-
+            var notificationsService = serviceProvider.GetService<NotificationsService>();
+            notificationsService.SendNotification(notification);
 
             await Task.CompletedTask;
         }

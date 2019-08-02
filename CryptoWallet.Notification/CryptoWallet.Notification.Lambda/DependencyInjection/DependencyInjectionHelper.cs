@@ -24,9 +24,10 @@ namespace CryptoWallet.Notification.Lambda.DependencyInjection
              .AddEnvironmentVariables();
 
             IConfiguration configuration = builder.Build();
-            var appSettings = new AppSettings(configuration);
+            //TODO: Fix this AppSettings issue
+            //var appSettings = new AppSettings(configuration);
 
-            services.AddSingleton<IAppSettings>(appSettings);
+            //services.AddSingleton<IAppSettings>(appSettings);
 
             services.AddScoped<NotificationsService>();
             services.AddScoped<MessageProviderStrategy>();
