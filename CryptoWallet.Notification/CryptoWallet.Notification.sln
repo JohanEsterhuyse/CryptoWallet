@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoWallet.Notification.Api", "CryptoWallet.Notification.Api\CryptoWallet.Notification.Api.csproj", "{9E25B0CB-790C-4E78-97EF-EA6DF9E9348A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7CE1533F-3BC4-464C-97A8-7B166217C5B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoWallet.Notification.Domain.Test", "CryptoWallet.Notification.Domain.Test\CryptoWallet.Notification.Domain.Test.csproj", "{670A7A73-26A5-491D-BF1B-E23242335C8A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoWallet.Notification.Common", "CryptoWallet.Notification.Common\CryptoWallet.Notification.Common.csproj", "{6BE644B6-8523-480C-93E5-E9B44C874B12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoWallet.Notification.Domain", "CryptoWallet.Notification.Domain\CryptoWallet.Notification.Domain.csproj", "{2F76882F-698F-4DEA-8A5C-7EA17F780A95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoWallet.Notification.Service", "CryptoWallet.Notification.Service\CryptoWallet.Notification.Service.csproj", "{C9A5E414-99A5-4728-A94E-7438F679003B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoWallet.Notification.Service.Test", "CryptoWallet.Notification.Service.Test\CryptoWallet.Notification.Service.Test.csproj", "{5FF47AB4-212F-4F89-922B-02532A97F6D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoWallet.Notification.Messaging.Sms", "CryptoWallet.Notification.Messaging.Sms\CryptoWallet.Notification.Messaging.Sms.csproj", "{25654FB8-3733-43C4-8267-9A542E499D08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoWallet.Notification.Messaging.Email", "CryptoWallet.Notification.Messaging.Email\CryptoWallet.Notification.Messaging.Email.csproj", "{1A6731DA-D9D3-459E-97DC-5F74E6EFEEB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E25B0CB-790C-4E78-97EF-EA6DF9E9348A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E25B0CB-790C-4E78-97EF-EA6DF9E9348A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E25B0CB-790C-4E78-97EF-EA6DF9E9348A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E25B0CB-790C-4E78-97EF-EA6DF9E9348A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{670A7A73-26A5-491D-BF1B-E23242335C8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{670A7A73-26A5-491D-BF1B-E23242335C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{670A7A73-26A5-491D-BF1B-E23242335C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{670A7A73-26A5-491D-BF1B-E23242335C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BE644B6-8523-480C-93E5-E9B44C874B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BE644B6-8523-480C-93E5-E9B44C874B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BE644B6-8523-480C-93E5-E9B44C874B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BE644B6-8523-480C-93E5-E9B44C874B12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F76882F-698F-4DEA-8A5C-7EA17F780A95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F76882F-698F-4DEA-8A5C-7EA17F780A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F76882F-698F-4DEA-8A5C-7EA17F780A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F76882F-698F-4DEA-8A5C-7EA17F780A95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A5E414-99A5-4728-A94E-7438F679003B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A5E414-99A5-4728-A94E-7438F679003B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A5E414-99A5-4728-A94E-7438F679003B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A5E414-99A5-4728-A94E-7438F679003B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FF47AB4-212F-4F89-922B-02532A97F6D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF47AB4-212F-4F89-922B-02532A97F6D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF47AB4-212F-4F89-922B-02532A97F6D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF47AB4-212F-4F89-922B-02532A97F6D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25654FB8-3733-43C4-8267-9A542E499D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25654FB8-3733-43C4-8267-9A542E499D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25654FB8-3733-43C4-8267-9A542E499D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25654FB8-3733-43C4-8267-9A542E499D08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A6731DA-D9D3-459E-97DC-5F74E6EFEEB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A6731DA-D9D3-459E-97DC-5F74E6EFEEB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A6731DA-D9D3-459E-97DC-5F74E6EFEEB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A6731DA-D9D3-459E-97DC-5F74E6EFEEB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{670A7A73-26A5-491D-BF1B-E23242335C8A} = {7CE1533F-3BC4-464C-97A8-7B166217C5B5}
+		{5FF47AB4-212F-4F89-922B-02532A97F6D7} = {7CE1533F-3BC4-464C-97A8-7B166217C5B5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4670D2A1-3634-4956-8A76-685CC61799AA}
+	EndGlobalSection
+EndGlobal
