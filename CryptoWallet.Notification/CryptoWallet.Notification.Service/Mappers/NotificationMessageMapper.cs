@@ -9,8 +9,8 @@ namespace CryptoWallet.Notification.Service.Mappers
         {
             return new NotificationMessage
             {
-                Message = notificationMessageDto.Message,
-                Recipient = notificationMessageDto.Recipient,
+                Body = notificationMessageDto.Message,
+                From = notificationMessageDto.Recipient,
                 Subject = notificationMessageDto.Subject
             };
         }

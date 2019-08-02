@@ -5,9 +5,17 @@ namespace CryptoWallet.Notification.Common
 {
     public class AppSettings : IAppSettings
     {
+        public string SmtpServer { get; private set; }
+
+        public string SmtpUserName { get; private set; }
+
+        public string SmtpPassword { get; private set; }
+
         public AppSettings(IConfiguration Configuration)
         {
-            //setting = Configuration["setting"];
+            SmtpServer = Configuration["SmtpServer"];
+            SmtpUserName = Configuration["SmtpUserName"];
+            SmtpPassword = Configuration["SmtpPassword"];
         }
     }
 }
