@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CryptoWallet.Orders.Service;
 using CryptoWallet.Orders.Service.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CryptoWallet.Orders.Controllers
@@ -19,6 +16,7 @@ namespace CryptoWallet.Orders.Controllers
         }
 
         // GET api/values
+        [Authorize]
         [HttpPost]
         [Route("createtrade")]
         public bool CreateTrade([FromBody] TradeDto tradeDto)

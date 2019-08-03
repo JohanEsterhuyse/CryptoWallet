@@ -1,19 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CryptoWallet.Notification.Common;
 using CryptoWallet.Notification.Common.Interface.Common;
 using CryptoWallet.Orders.Common.Interface.DAL;
 using CryptoWallet.Orders.DAL.Sql.Repositories;
 using CryptoWallet.Orders.Domain;
 using CryptoWallet.Orders.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace CryptoWallet.Orders
 {
@@ -31,7 +27,23 @@ namespace CryptoWallet.Orders
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvcCore()
+                           .AddAuthorization()
+                           .AddJsonFormatters();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme =
+                                           JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme =
+                                           JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.Authority = "https://localhost:44383";
+                o.Audience = "apiApp";
+                o.RequireHttpsMetadata = false;
+            });
 
             //TODO: Change DI to use catalogs so that every layer becomes responsible for its own dependencies
             var envname = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -64,6 +76,8 @@ namespace CryptoWallet.Orders
             {
                 app.UseHsts();
             }
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseMvc();
