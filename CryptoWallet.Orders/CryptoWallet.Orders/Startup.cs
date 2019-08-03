@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using CryptoWallet.Notification.Common;
 using CryptoWallet.Notification.Common.Interface.Common;
+using CryptoWallet.Orders.Common.Interface.DAL;
+using CryptoWallet.Orders.DAL.Sql.Repositories;
+using CryptoWallet.Orders.Domain;
 using CryptoWallet.Orders.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +46,8 @@ namespace CryptoWallet.Orders
             services.AddSingleton<IAppSettings>(appSettings);
 
             services.AddScoped<OrderContext>();
+            services.AddScoped<IRepository<Trade>,TradeRepository>();
+            services.AddScoped<TradeService>();
 
             // Add S3 to the ASP.NET Core dependency injection framework.
             services.AddAWSService<Amazon.S3.IAmazonS3>();

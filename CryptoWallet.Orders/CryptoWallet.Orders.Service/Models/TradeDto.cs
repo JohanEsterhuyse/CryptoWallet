@@ -1,11 +1,9 @@
-﻿using System;
+﻿using CryptoWallet.Orders.Domain;
 
-namespace CryptoWallet.Orders.Domain
+namespace CryptoWallet.Orders.Service.Models
 {
-    public class Trade
+    public class TradeDto
     {
-        public Guid Id { get; set; }
-
         public TradeType TradeType { get; set; }
 
         public string Description { get; set; }
