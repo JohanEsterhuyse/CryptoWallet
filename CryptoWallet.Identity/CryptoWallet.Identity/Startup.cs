@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
+using CryptoWallet.Identity.Authorize;
+using CryptoWallet.Identity.Common.Interface.DAL;
+using CryptoWallet.Identity.DAL.Sql;
+using CryptoWallet.Identity.Helper;
 using IdentityServer4.Services;
 using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Builder;
@@ -16,22 +16,20 @@ namespace CryptoWallet.Identity
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+       
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore().AddJsonFormatters(); //Adding mvc and able to work with json.
-                                                       //dependency injection
-            services.AddScoped<IAuthRepository, AuthRepository>(); // Adds the AuthRepository
-            services.AddScoped<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>(); // Adds the IdentityServer4 interface to customize the process of authentication
-            services.AddScoped<IProfileService, ProfileService>(); // Adds the IdentityServer4 interface to customize the process of getting the claims.
+            services.AddMvcCore().AddJsonFormatters();
+
+            services.AddScoped<IAuthRepository, AuthRepository>(); 
+            services.AddScoped<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>(); 
+            services.AddScoped<IProfileService, ProfileService>(); 
             services.AddIdentityServer()
                   .AddDeveloperSigningCredential()
-                  .AddInMemoryApiResources(Config.GetApiResources()) //Adds the APIResouces from the Config.cs 
-                  .AddInMemoryClients(Config.GetClients()); //Adds the Clients from the Config.cs
+                  .AddInMemoryApiResources(Config.GetApiResources())
+                  .AddInMemoryClients(Config.GetClients());
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

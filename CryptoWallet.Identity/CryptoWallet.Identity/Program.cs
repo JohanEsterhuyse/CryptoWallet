@@ -12,6 +12,7 @@ namespace CryptoWallet.Identity
 {
     public class Program
     {
+        //Test at https://localhost:44383/.well-known/openid-configuration
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
