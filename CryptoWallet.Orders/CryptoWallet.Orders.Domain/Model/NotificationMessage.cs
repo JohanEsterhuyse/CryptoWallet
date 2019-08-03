@@ -1,6 +1,6 @@
-﻿namespace CryptoWallet.Service.Notification
+﻿namespace CryptoWallet.Orders.Domain.Model
 {
-    public class NotificationMessageDto
+    public class NotificationMessage
     {
         public NotificationMessageType MessageType { get; set; }
 

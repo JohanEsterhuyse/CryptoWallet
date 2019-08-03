@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="RestSharp" Version="106.6.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoWallet.Orders.Common\CryptoWallet.Orders.Common.csproj" />
+    <ProjectReference Include="..\CryptoWallet.Orders.DAL.Sql\CryptoWallet.Orders.DAL.Sql.csproj" />
+    <ProjectReference Include="..\CryptoWallet.Orders.Domain\CryptoWallet.Orders.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

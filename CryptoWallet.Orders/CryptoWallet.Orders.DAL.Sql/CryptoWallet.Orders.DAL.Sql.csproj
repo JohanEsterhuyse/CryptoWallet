@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoWallet.Orders.Common\CryptoWallet.Orders.Common.csproj" />
+    <ProjectReference Include="..\CryptoWallet.Orders.Domain\CryptoWallet.Orders.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migration Scripts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.3" />
+  </ItemGroup>
+
+</Project>
