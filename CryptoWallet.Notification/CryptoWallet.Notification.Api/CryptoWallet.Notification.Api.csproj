@@ -33,6 +33,7 @@
   <ItemGroup>
     <Content Update="appsettings.json">
       <TransformOnBuild>true</TransformOnBuild>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 </Project>

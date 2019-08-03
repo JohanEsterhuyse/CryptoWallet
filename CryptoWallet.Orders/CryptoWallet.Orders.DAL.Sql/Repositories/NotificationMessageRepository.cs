@@ -2,22 +2,21 @@
 using CryptoWallet.Orders.Domain.Model;
 using CryptoWallet.Orders.Service;
 using System;
-using System.Linq;
 
 namespace CryptoWallet.Orders.DAL.Sql.Repositories
 {
-    public class TradeRepository : IRepository<Trade>
+    public class NotificationMessageRepository : IRepository<NotificationMessage>
     {
         private readonly OrderContext _orderContext;
 
-        public TradeRepository(OrderContext orderContext)
+        public NotificationMessageRepository(OrderContext orderContext)
         {
             _orderContext = orderContext;
         }
 
-        public bool Create(Trade item)
+        public bool Create(NotificationMessage item)
         {
-            _orderContext.Trades.Add(item);
+            _orderContext.NotificationMessages.Add(item);
             var effected = _orderContext.SaveChanges();
 
             return effected > 0;
@@ -28,14 +27,14 @@ namespace CryptoWallet.Orders.DAL.Sql.Repositories
             throw new NotImplementedException();
         }
 
-        public Trade Get(Guid id)
+        public NotificationMessage Get(Guid id)
         {
-            return _orderContext.Trades.Where(x => x.Id == id).FirstOrDefault();
+            throw new NotImplementedException();
         }
 
-        public bool Update(Trade item)
+        public bool Update(NotificationMessage item)
         {
-            _orderContext.Trades.Update(item);
+            _orderContext.NotificationMessages.Update(item);
             var effected = _orderContext.SaveChanges();
 
             return effected > 0;

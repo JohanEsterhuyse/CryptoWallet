@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoWallet.Orders.Common\CryptoWallet.Orders.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
 ﻿using CryptoWallet.Orders.Domain;
+using CryptoWallet.Orders.Domain.Model;
 using CryptoWallet.Orders.Service.Models;
 
 namespace CryptoWallet.Orders.Service.Mappers

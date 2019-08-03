@@ -1,5 +1,5 @@
 ﻿using CryptoWallet.Notification.Common.Interface.Common;
-using CryptoWallet.Orders.Domain;
+using CryptoWallet.Orders.Domain.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace CryptoWallet.Orders.Service
@@ -14,6 +14,7 @@ namespace CryptoWallet.Orders.Service
         }
 
         public DbSet<Trade> Trades { get; set; }
+        public DbSet<NotificationMessage> NotificationMessages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

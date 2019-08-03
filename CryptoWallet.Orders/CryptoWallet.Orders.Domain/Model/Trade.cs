@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CryptoWallet.Orders.Domain
+namespace CryptoWallet.Orders.Domain.Model
 {
     public class Trade
     {
@@ -11,5 +11,7 @@ namespace CryptoWallet.Orders.Domain
         public string Description { get; set; }
 
         public decimal Amount { get; set; }
+
+        bool Suspicious { get; set; }
     }
 }

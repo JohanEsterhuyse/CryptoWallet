@@ -1,4 +1,5 @@
 ﻿using CryptoWallet.Orders.Domain;
+using CryptoWallet.Orders.Domain.Model;
 
 namespace CryptoWallet.Orders.Service.Models
 {

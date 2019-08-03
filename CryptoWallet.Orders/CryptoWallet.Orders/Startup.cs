@@ -3,14 +3,17 @@ using CryptoWallet.Notification.Common;
 using CryptoWallet.Notification.Common.Interface.Common;
 using CryptoWallet.Orders.Common.Interface.DAL;
 using CryptoWallet.Orders.DAL.Sql.Repositories;
-using CryptoWallet.Orders.Domain;
+using CryptoWallet.Orders.Domain.Model;
+using CryptoWallet.Orders.Domain.Validation;
 using CryptoWallet.Orders.Middleware;
 using CryptoWallet.Orders.Service;
+using CryptoWallet.Orders.Service.Helper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace CryptoWallet.Orders
 {
@@ -31,7 +34,8 @@ namespace CryptoWallet.Orders
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMvcCore()
                            .AddAuthorization()
-                           .AddJsonFormatters();
+                           .AddJsonFormatters()
+                           .AddApiExplorer();
 
             services.AddAuthentication(options =>
             {
@@ -60,7 +64,17 @@ namespace CryptoWallet.Orders
 
             services.AddScoped<OrderContext>();
             services.AddScoped<IRepository<Trade>,TradeRepository>();
+            services.AddScoped<IRepository<NotificationMessage>,NotificationMessageRepository>();
+
             services.AddScoped<TradeService>();
+            services.AddScoped<TradeValidator>();
+            services.AddScoped<INotificationHelper, NotificationHelper>();
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "CryptoWallet.OrdersApi", Version = "v1" });
+            });
 
             // Add S3 to the ASP.NET Core dependency injection framework.
             services.AddAWSService<Amazon.S3.IAmazonS3>();
@@ -77,6 +91,13 @@ namespace CryptoWallet.Orders
             {
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CryptoWallet.Orders Api");
+            });
 
             app.UseAuthentication();
             app.UseMiddleware<ExceptionHandlerMiddleware>();

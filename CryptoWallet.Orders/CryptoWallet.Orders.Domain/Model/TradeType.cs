@@ -1,4 +1,4 @@
-﻿namespace CryptoWallet.Orders.Domain
+﻿namespace CryptoWallet.Orders.Domain.Model
 {
     public enum TradeType
     {
@@ -9,6 +9,7 @@
         Bonus = 5,
         Commission = 6,
         Purchase = 7,
-        InterBankTransfer = 8
+        InterBankTransfer = 8,
+        Other = 9
     }
 }
