@@ -4,6 +4,7 @@ using CryptoWallet.Notification.Common.Interface.Common;
 using CryptoWallet.Orders.Common.Interface.DAL;
 using CryptoWallet.Orders.DAL.Sql.Repositories;
 using CryptoWallet.Orders.Domain;
+using CryptoWallet.Orders.Middleware;
 using CryptoWallet.Orders.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -78,6 +79,7 @@ namespace CryptoWallet.Orders
             }
 
             app.UseAuthentication();
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseMvc();

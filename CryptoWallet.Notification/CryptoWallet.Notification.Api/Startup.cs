@@ -1,3 +1,4 @@
+using CryptoWallet.Notification.Api.Middleware;
 using CryptoWallet.Notification.Common;
 using CryptoWallet.Notification.Common.Interface.Common;
 using CryptoWallet.Notification.Service;
@@ -69,6 +70,8 @@ namespace CryptoWallet
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
